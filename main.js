@@ -10,3 +10,7 @@ const ballAcceleration = 0.1;//it determines the speed of the ball//
 const paddleSpeed = 5;
 const winningScore = 5;
 
+//player paddle 
+const player={
+    
+}
