@@ -1,16 +1,27 @@
-//get the canvas element and its 2d drawing context
-const canvas = document.getElementById('pongCanvas');
-const ctx = canvas.getContext('2d');
+document.getElementById('addTaskBtn').addEventListener('click', function() {
+  const taskInput = document.getElementById('taskInput');
+  const taskText = taskInput.value;
 
-//game settings
-const paddlewidth = 10;
-const paddleheight = 100;
-const ballradius = 10;
-const ballAcceleration = 0.1;//it determines the speed of the ball//
-const paddleSpeed = 5;
-const winningScore = 5;
+  if (taskText === '') return;
 
-//player paddle 
-const player={
-    
-}
+  const taskList = document.getElementById('taskList');
+  const listItem = document.createElement('li');
+  listItem.className = 'flex justify-between items-center bg-gray-100 p-3 rounded-lg shadow';
+
+  const taskSpan = document.createElement('span');
+  taskSpan.textContent = taskText;
+  taskSpan.className = 'text-gray-700';
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.className = 'deleteTaskBtn bg-red-500 text-white p-1 rounded-lg hover:bg-red-600 transition duration-300';
+
+  deleteButton.addEventListener('click', function() {
+    taskList.removeChild(listItem);
+  });
+
+  listItem.appendChild(taskSpan);
+  listItem.appendChild(deleteButton);
+  taskList.appendChild(listItem);
+  taskInput.value = '';
+});
